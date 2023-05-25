@@ -1,2 +1,2 @@
-export * from './userSlice.model';
+export * from './authSlice.model.ts';
 export * from './usersSlice.model';

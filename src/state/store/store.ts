@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { createUserSlice, createUsersSlice } from '../slices';
-import { UserSlice, UsersSlice } from '../../models';
+import { createAuthSlice, createUsersSlice } from '../slices';
+import { AuthSlice, UsersSlice } from '../../models';
 
-export const useStore = create<UsersSlice & UserSlice>()(devtools((...a) => ({
+export const useStore = create<UsersSlice & AuthSlice>()(devtools((...a) => ({
   ...createUsersSlice(...a),
-  ...createUserSlice(...a),
+  ...createAuthSlice(...a),
 })));

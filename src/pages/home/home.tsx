@@ -1,28 +1,8 @@
-import { useEffect } from 'react';
-import { signInWithPopup } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, authProvider, db } from '../../config';
 import { useStore } from '../../state';
 import GoogleLogo from '../../assets/imgs/google-logo.svg';
 
 export function Home() {
-  const getAllUsers = useStore((state) => state.getAllUsers);
-
-  const login = async () => {
-    const { user } = await signInWithPopup(auth, authProvider);
-    const data = {
-      uid: user.uid,
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-      phoneNumber: user.phoneNumber,
-    };
-    await setDoc(doc(db, 'users', data.uid), data);
-  };
-
-  useEffect(() => {
-    getAllUsers();
-  }, []);
+  const login = useStore((state) => state.login);
 
   return (
     <>
