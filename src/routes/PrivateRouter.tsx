@@ -1,16 +1,30 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PrivateLayout } from '../layouts';
-import { Start } from '../pages';
+import { Chats } from '../components';
+import { Contacts, NotFound } from '../pages';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <PrivateLayout/>,
+    element: <PrivateLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
-        element: <Start/>,
-      }
+        element: <Chats />,
+      },
+      {
+        path: 'contacts',
+        element: <Contacts />,
+      },
+      {
+        path: 'chats',
+        element: <Chats />,
+      },
+      {
+        path: 'configurations',
+        element: <h2>Configuración</h2>,
+      },
     ]
   }
 ]);
