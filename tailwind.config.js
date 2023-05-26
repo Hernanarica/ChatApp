@@ -6,7 +6,11 @@ export default {
     './src/**/**/*.tsx',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        message: '#91d1f4'
+      }
+    },
   },
   plugins: [],
 };
