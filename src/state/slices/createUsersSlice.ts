@@ -3,6 +3,14 @@ import { collection, getDocs } from 'firebase/firestore';
 import { User, UsersSlice } from '../../models';
 import { db } from '../../config';
 
+interface State {
+  users: [];
+}
+
+const initialState: State = {
+  users: []
+};
+
 export const createUsersSlice: StateCreator<UsersSlice> = (set) => ({
   users: [],
   getAllUsers: async () => {
@@ -10,5 +18,8 @@ export const createUsersSlice: StateCreator<UsersSlice> = (set) => ({
     const usersData: User[] = querySnapshot.docs.map((doc) => (<User>doc.data()));
 
     set(() => ({ users: usersData }));
+  },
+  reset: () => {
+    set(initialState);
   }
 });
