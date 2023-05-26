@@ -4,5 +4,5 @@ export interface AuthSlice {
   user: User | null,
   login: () => void,
   logout: () => void,
-  reset: () => void
+  resetAuthState: () => void
 }

@@ -19,7 +19,7 @@ export const createUsersSlice: StateCreator<UsersSlice> = (set) => ({
 
     set(() => ({ users: usersData }));
   },
-  reset: () => {
+  resetUsersState: () => {
     set(initialState);
   }
 });

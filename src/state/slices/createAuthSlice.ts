@@ -27,7 +27,7 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set) => ({
 
     set(() => ({ user: null }));
   },
-  reset: () => {
+  resetAuthState: () => {
     set(initialState);
   }
 });
