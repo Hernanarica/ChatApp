@@ -7,7 +7,7 @@ export function Home() {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-message lg:h-screen lg:overflow-hidden">
+      <div className="min-h-screen flex items-center justify-center bg-message-900 lg:h-screen lg:overflow-hidden">
         <div className="hidden lg:flex lg:items-center lg:justify-center lg:w-4/6">
           <img src={ Messages } alt="Messages image"/>
         </div>

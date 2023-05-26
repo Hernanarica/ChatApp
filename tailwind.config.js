@@ -8,7 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        message: '#91d1f4'
+        message: {
+          100: '#F8FAFF',
+          900: '#91d1f4',
+        }
       }
     },
   },

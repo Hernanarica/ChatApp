@@ -1,11 +1,11 @@
-import { useStore } from '../../state';
+import { Chat, Chats, Sidebar } from '../../components';
 
 export function Start() {
-  const logout = useStore(state => state.logout);
-
   return (
-    <>
-      <button className="px-2 py-1 text-white bg-red-500 rounded" onClick={ logout }>Logout</button>
-    </>
+    <div className="h-screen flex">
+      <Sidebar />
+      <Chats />
+      <Chat />
+    </div>
   );
 }
