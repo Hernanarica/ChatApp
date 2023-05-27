@@ -3,6 +3,7 @@ export interface Chat {
 }
 
 export interface ChatInfo {
+  uid: string
   lasMessage: string,
   usernameChat: string,
   userPhotoChat: string,

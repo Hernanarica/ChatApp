@@ -42,6 +42,7 @@ export async function createChat(userAuthUid: string | undefined, userChat: User
   try {
     await setDoc(doc(db, `chats/${ userAuthUid }/`, `chats/${ userChat.uid }`), {
       chatInfo: {
+        uid: userChat.uid,
         usernameChat: userChat.displayName,
         userPhotoChat: userChat.photoURL,
         lastMessage: 'Last Message'

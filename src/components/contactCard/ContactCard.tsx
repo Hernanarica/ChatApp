@@ -8,9 +8,14 @@ interface Props {
 
 export function ContactCard({ user }: Props) {
   const userAuth = useStore(state => state.user);
+  const chats = useStore(state => state.chats);
   const createChat = useStore(state => state.createChat);
 
   const handleOpenChat = async (user: User) => {
+    const userExist = chats.some(chat => chat.chatInfo.uid === user.uid);
+
+    if (userExist) return;
+
     console.log(`Opening chat with: ${ user.uid }`);
 
     createChat(userAuth?.uid, user);
