@@ -29,16 +29,16 @@ export function Chats() {
             chats.map(chat => (
               <div
                 className="relative w-[94%] flex items-center gap-3 p-3 h-20 border border-gray-200 bg-white rounded-2xl cursor-pointer"
-                key={ chat.chatInfo.userPhotoChat }
-                onClick={ () => navigate(`users/${ chat.chatInfo.usernameChat }`) }
+                key={ chat.photoURL }
+                onClick={ () => navigate(`users/${ chat.displayName }`) }
               >
                 <div>
                   <span className="block w-10 h-10 bg-green-600 rounded-full overflow-hidden">
-                    <img src={ chat.chatInfo.userPhotoChat } alt={ chat.chatInfo.usernameChat }/>
+                    <img src={ chat.photoURL } alt={ chat.displayName }/>
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-semibold leading-4">{ chat.chatInfo.usernameChat }</h3>
+                  <h3 className="font-semibold leading-4">{ chat.displayName }</h3>
                   <span className="text-gray-500 text-xs">Last message...</span>
                 </div>
                 <button className="absolute bottom-3 right-3">

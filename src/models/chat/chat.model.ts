@@ -1,10 +1,6 @@
 export interface Chat {
-  chatInfo: ChatInfo;
-}
-
-export interface ChatInfo {
   uid: string
+  displayName: string,
+  photoURL: string,
   lasMessage: string,
-  usernameChat: string,
-  userPhotoChat: string,
 }

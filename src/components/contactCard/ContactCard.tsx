@@ -1,5 +1,5 @@
 import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
-import { User } from '../../models';
+import { Chat, User } from '../../models';
 import { useStore } from '../../state';
 
 interface Props {
@@ -12,13 +12,20 @@ export function ContactCard({ user }: Props) {
   const createChat = useStore(state => state.createChat);
 
   const handleOpenChat = async (user: User) => {
-    const userExist = chats.some(chat => chat.chatInfo.uid === user.uid);
+    const userExist = chats.some(chat => chat.uid === user.uid);
 
     if (userExist) return;
 
+    const userChat: Chat = {
+      uid: user.uid,
+      displayName: user.displayName ?? "",
+      photoURL: user.photoURL ?? "",
+      lasMessage: 'Last Message...',
+    };
+
     console.log(`Opening chat with: ${ user.uid }`);
 
-    createChat(userAuth?.uid, user);
+    createChat(userAuth?.uid, userChat);
 
     console.log('chat creado!');
   };

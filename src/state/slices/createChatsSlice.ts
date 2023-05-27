@@ -11,5 +11,9 @@ export const createChatsSlice: StateCreator<ChatSlice> = (set) => ({
   },
   createChat: async (userAuthUid, userChat) => {
     await createChat(userAuthUid, userChat);
+
+    set(state => ({
+      chats: [ ...state.chats, userChat ]
+    }));
   }
 });

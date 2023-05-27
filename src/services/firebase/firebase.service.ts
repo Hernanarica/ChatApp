@@ -38,15 +38,13 @@ export async function getAllChats(userAuthUid: string | undefined): Promise<Chat
   }
 }
 
-export async function createChat(userAuthUid: string | undefined, userChat: User): Promise<void> {
+export async function createChat(userAuthUid: string | undefined, userChat: Chat): Promise<void> {
   try {
     await setDoc(doc(db, `chats/${ userAuthUid }/`, `chats/${ userChat.uid }`), {
-      chatInfo: {
-        uid: userChat.uid,
-        usernameChat: userChat.displayName,
-        userPhotoChat: userChat.photoURL,
-        lastMessage: 'Last Message'
-      }
+      uid: userChat.uid,
+      displayName: userChat.displayName,
+      photoURL: userChat.photoURL,
+      lastMessage: 'Last Message'
     });
   } catch (err) {
     throw new Error(`${ err }`);
