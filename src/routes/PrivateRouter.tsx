@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PrivateLayout } from '../layouts';
-import { Chats } from '../components';
+import { Chat, Chats, WelcomeChat } from '../components';
 import { Contacts, NotFound } from '../pages';
 
 const router = createBrowserRouter([
@@ -20,6 +20,16 @@ const router = createBrowserRouter([
       {
         path: 'chats',
         element: <Chats />,
+        children: [
+          {
+            index: true,
+            element: <WelcomeChat />
+          },
+          {
+            path: 'users/:username',
+            element: <Chat />
+          }
+        ]
       },
       {
         path: 'configurations',

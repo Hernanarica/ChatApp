@@ -46,7 +46,7 @@ export function Sidebar() {
           <ArrowRightOnRectangleIcon className="h-7"/>
         </button>
         <span className="inline-block w-11 h-11 bg-blue-600 rounded-full overflow-hidden">
-            <img src={ user?.photoURL } alt={ user?.displayName }/>
+            <img src={ user?.photoURL ?? "" } alt={ user?.displayName ?? "" }/>
           </span>
       </div>
     </div>

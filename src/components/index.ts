@@ -3,3 +3,4 @@ export * from './sidebar';
 export * from './chats';
 export * from './chat';
 export * from './contactCard';
+export * from './welcomechat';
