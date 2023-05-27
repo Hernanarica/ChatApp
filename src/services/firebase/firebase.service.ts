@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc, deleteDoc } from 'firebase/firestore';
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, authProvider, db } from '../../config';
 import { Chat, User } from '../../models';
@@ -46,6 +46,14 @@ export async function createChat(userAuthUid: string | undefined, userChat: Chat
       photoURL: userChat.photoURL,
       lastMessage: 'Last Message'
     });
+  } catch (err) {
+    throw new Error(`${ err }`);
+  }
+}
+
+export async function deleteChat(userAuthUid: string | undefined, userChatUid: string): Promise<void> {
+  try {
+    await deleteDoc(doc(db, `chats/${ userAuthUid }/`, `chats/${ userChatUid }`));
   } catch (err) {
     throw new Error(`${ err }`);
   }

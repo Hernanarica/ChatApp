@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 import { ChatSlice } from '../../models';
-import { createChat, getAllChats } from '../../services';
+import { createChat, deleteChat, getAllChats } from '../../services';
 
 export const createChatsSlice: StateCreator<ChatSlice> = (set) => ({
   chats: [],
@@ -14,6 +14,13 @@ export const createChatsSlice: StateCreator<ChatSlice> = (set) => ({
 
     set(state => ({
       chats: [ ...state.chats, userChat ]
+    }));
+  },
+  deleteChat: async (userAuthUid, userChatUid) => {
+    await deleteChat(userAuthUid, userChatUid);
+
+    set(state => ({
+      chats: state.chats.filter(chat => chat.uid !== userChatUid)
     }));
   }
 });

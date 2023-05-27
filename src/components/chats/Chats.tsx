@@ -2,10 +2,18 @@ import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { useStore } from '../../state';
+import * as React from 'react';
+
+// interface Props {
+//   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+//   userAuthUid: string,
+//   userChatUid: string
+// }
 
 export function Chats() {
   const userAuth = useStore(state => state.user);
   const getAllChats = useStore(state => state.getAllChats);
+  const deleteChat = useStore(state => state.deleteChat);
   const chats = useStore(state => state.chats);
   const navigate = useNavigate();
 
@@ -17,6 +25,12 @@ export function Chats() {
   if (!chats.length) {
     return <span>Loading...</span>;
   }
+
+  const handleDeleteChat = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, userAuthUid: string, userChatUid: string) => {
+    e.stopPropagation();
+
+    deleteChat(userAuthUid, userChatUid);
+  };
 
   return (
     <div className="h-screen flex w-full">
@@ -41,7 +55,10 @@ export function Chats() {
                   <h3 className="font-semibold leading-4">{ chat.displayName }</h3>
                   <span className="text-gray-500 text-xs">Last message...</span>
                 </div>
-                <button className="absolute bottom-3 right-3">
+                <button
+                  className="absolute bottom-3 right-3"
+                  onClick={ (e) => handleDeleteChat(e, userAuth?.uid ?? '' , chat.uid) }
+                >
                   <TrashIcon className="h-5 text-gray-400 transition hover:text-red-500"/>
                 </button>
               </div>
